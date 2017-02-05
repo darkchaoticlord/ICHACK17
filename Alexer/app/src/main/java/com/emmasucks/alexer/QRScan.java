@@ -45,10 +45,10 @@ public class QRScan extends AppCompatActivity implements ZXingScannerView.Result
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (result != null) {
             if (result.getContents() == null) {
-                Toast.makeText(this, "RIP", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Scan Cancelled", Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
-
+                
             }
         }
         super.onActivityResult(requestCode, resultCode, data);

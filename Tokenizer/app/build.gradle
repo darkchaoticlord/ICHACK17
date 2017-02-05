@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -20,7 +19,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -31,4 +30,12 @@ dependencies {
     compile 'com.android.support:design:25.1.1'
     testCompile 'junit:junit:4.12'
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+    compile 'com.github.kenglxn.QRGen:android:2.2.0'
+
+}
+
+repositories {
+    maven { url 'libs/core-3.3.0.jar' }
+    maven { url "https://jitpack.io" }
+
 }
