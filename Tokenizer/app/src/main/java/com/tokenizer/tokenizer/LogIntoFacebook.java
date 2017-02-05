@@ -5,15 +5,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.LinearLayout;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class LogIntoFacebook extends AppCompatActivity {
 
@@ -39,6 +42,21 @@ public class LogIntoFacebook extends AppCompatActivity {
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+                String token = loginResult.getAccessToken().getToken();
+                try {
+                    URL url = new URL("");
+                    HttpURLConnection client = (HttpURLConnection) url.openConnection();
+                    client.setDoOutput(true);
+                    client.connect();
+                    client.getOutputStream().write(Byte.valueOf(token));
+                    byte[] bytes = new byte[64];
+                    client.getInputStream().read(bytes);
+                    MainActivity.token = bytes;
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 Intent intent = new Intent(LogIntoFacebook.this, MainActivity.class);
                 startActivity(intent);
             }

@@ -31,11 +31,11 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
     compile 'com.github.kenglxn.QRGen:android:2.2.0'
+    compile 'org.apache.httpcomponents:httpclient-android:4.3.5.1'
 
 }
 
 repositories {
     maven { url 'libs/core-3.3.0.jar' }
-    maven { url "https://jitpack.io" }
-
+    maven { url 'https://jitpack.io' }
 }

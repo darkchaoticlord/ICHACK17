@@ -14,10 +14,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.UUID;
+
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawer;
     private Toolbar toolbar;
+    public static byte[] token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +41,8 @@ public class MainActivity extends AppCompatActivity {
         toggle.syncState();
         setUpNavigationView();
 
-        Intent intent = new Intent(MainActivity.this, GenerateQR.class);
-        startActivity(intent);
-        //setUpCardView();
+        UUID uuid = UUID.randomUUID();
+
     }
 
     @Override
