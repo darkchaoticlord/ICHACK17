@@ -1,35 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_log_into_facebook"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    app:theme="@style/com_facebook_loginview_default_style"
+    android:background="#285691"
     tools:context="com.tokenizer.tokenizer.LogIntoFacebook">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="top"
-        android:orientation="vertical"
-        android:background="#24558D">
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:background="@drawable/login_background"
+        android:id="@+id/login_layout">
 
-        <LinearLayout
+        <com.facebook.login.widget.LoginButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center">
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/docsoc"
-                android:layout_weight="1" />
-        </LinearLayout>
-
-
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="30dp"
+            android:id="@+id/login_button"/>
     </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

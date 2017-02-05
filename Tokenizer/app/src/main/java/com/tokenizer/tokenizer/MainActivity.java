@@ -3,11 +3,7 @@ package com.tokenizer.tokenizer;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -22,8 +18,6 @@ public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawer;
     private Toolbar toolbar;
-    private RecyclerView mRecyclerView;
-    private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,15 +38,9 @@ public class MainActivity extends AppCompatActivity {
         toggle.syncState();
         setUpNavigationView();
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-        mRecyclerView.setHasFixedSize(true);
-
-        // use a linear layout manager
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        setUpCardView();
+        Intent intent = new Intent(MainActivity.this, GenerateQR.class);
+        startActivity(intent);
+        //setUpCardView();
     }
 
     @Override
@@ -91,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
     // Class that sets up a dynamic toolbar for the layout
     private class ActionBarToggle extends ActionBarDrawerToggle {
 
-        public ActionBarToggle(Activity activity, DrawerLayout drawer, int open, int close) {
+        ActionBarToggle(Activity activity, DrawerLayout drawer, int open, int close) {
             super(activity, drawer, open, close);
         }
 
@@ -117,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 new NavigationView.OnNavigationItemSelectedListener() {
 
                     @Override
-                    public boolean onNavigationItemSelected(MenuItem item) {
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                         // The programs gets the ID of the item selected by the user
                         // and then decides what to do for item clicked.
@@ -136,10 +124,5 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     }
                 });
-    }
-
-    private void setUpCardView() {
-        CardView cardView = new CardView(this);
-
     }
 }
